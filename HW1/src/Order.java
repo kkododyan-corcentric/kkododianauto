@@ -1,17 +1,21 @@
-
+import java.time.LocalDate;
 public abstract class Order {
-    protected Number price;
+    public Order (String name){
+        this.name = name;
+        this.date = today.toString();
+    }
+    protected int price;
     protected String name;
-    protected String[] items = new String[10];
     protected String date;
-    protected int i = 0;
+    protected String[] items = new String[10];
+    LocalDate today = LocalDate.now();
 
+    protected int i = 0;
     public String getOrder() {
         return name + " " + price + " " + date;
     }
-
-    public void addItem(String item, Number itemPrice) {
-        price = itemPrice;
+    public void addItem(String item, int itemPrice) {
+        this.price = this.price + itemPrice;
         if(i<=items.length) {
             items[i] = item;
             i++;
